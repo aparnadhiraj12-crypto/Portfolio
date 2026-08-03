@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap');
+
+/* Local font: "aria-hidden" — place ./fonts/aria-hidden.woff2 in the project to use it */
+@font-face {
+  font-family: "aria-hidden";
+  src: url('./fonts/aria-hidden.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/* Load headline font used on the reference site (Futura Now Headline). */
+@font-face {
+  font-display: swap;
+  font-family: "Futura Now Headline";
+  font-style: normal;
+  font-weight: 400 800;
+  /* Serving from the reference site; if you want it local, download and place under src/fonts/ */
+  src: url('https://spencergabor.work/fonts/FuturaNowHeadline-CnXBd.woff2') format('woff2');
+}
+
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #141414;
+  --card: #FFFFFF;
+  --card-foreground: #141414;
+  --primary: #2F8F5B;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F4F4F2;
+  --secondary-foreground: #141414;
+  --muted: #F0F0EE;
+  --muted-foreground: #5C5C5C;
+  --accent: #2F8F5B;
+  --accent-foreground: #FFFFFF;
+  --border: rgba(20, 20, 20, 0.10);
+  --ring: #2F8F5B;
+  --radius: 999px;
+  --shadow-paper: 0 8px 32px rgba(20, 20, 20, 0.07), 0 2px 8px rgba(20, 20, 20, 0.04);
+  --shadow-lift: 0 12px 40px rgba(20, 20, 20, 0.12), 0 4px 16px rgba(20, 20, 20, 0.06);
+  --font-display: "aria-hidden", 'Outfit', sans-serif;
+  --font-headline: "Futura Now Headline", sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-hand: 'Caveat', cursive;
+  --pale: #e9e9e7; /* pale watermark color used beneath headline */
+  --label: #8A8A88;
+  --nav-bg: rgba(250, 250, 248, 0.88);
+  --modal-overlay: rgba(20, 20, 20, 0.5);
+}
+
+.dark {
+  --background: #111110;
+  --foreground: #F5F5F3;
+  --card: #1A1A18;
+  --card-foreground: #F5F5F3;
+  --secondary: #222220;
+  --secondary-foreground: #F5F5F3;
+  --muted: #1E1E1C;
+  --muted-foreground: #8A8A88;
+  --border: rgba(255, 255, 255, 0.08);
+  --label: #9C9C98;
+  --nav-bg: rgba(17, 17, 16, 0.85);
+  --modal-overlay: rgba(0, 0, 0, 0.65);
+}
+
+.dark body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

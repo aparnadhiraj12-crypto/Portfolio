@@ -1,0 +1,10 @@
+{
+  "description": "Create and showcase professional portfolios with ease, helping creatives and professionals highlight their skills and projects effectively.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
